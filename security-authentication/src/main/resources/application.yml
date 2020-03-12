@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: authentication-service
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      forec: true
+  datasource:
+    url: jdbc:mysql://192.168.59.103:3306/security?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  redis:
+    database: 0
+    host: 192.168.59.103
+    port: 6379
+    password: '123456'
+    jedis:
+      pool:
+        max-active: 1000  #最大连接数据库连接数,设 0 为没有限制
+        max-idle: 50     #最大等待连接中的数量,设 0 为没有限制
+        max-wait: 1000  #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+        min-idle: 50     #最小等待连接中的数量,设 0 为没有限制
+    timeout: 1000
+loggin:
+  path: logs/${spring.application.name}.log
+  level: error
+server:
+  port: 9001
+  servlet:
+    context-path: /auth
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
